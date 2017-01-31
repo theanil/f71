@@ -1,5 +1,5 @@
 // Initialize your app
-var myApp = new Framework7();
+var myApp = new Framework7({pushState: true, swipePanel: 'left'});
 
 // Export selectors engine
 var $$ = Dom7;
@@ -95,4 +95,16 @@ myApp.onPageInit('login', function (page) {
     }); 
 
 });
+
+$$('.confirm-title-ok-cancel').on('click', function () {
+    myApp.confirm('Are you sure?', 'My App', 
+      function () {
+        myApp.alert('You clicked Ok button', '');
+      },
+      function () {
+        myApp.alert('You clicked Cancel button', '');
+      }
+    );
+}); 
+
 
