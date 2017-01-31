@@ -46,3 +46,19 @@ function createContentPage() {
     );
 	return;
 }
+
+//alert('hhh');
+
+myApp.onPageInit('login', function (page) {
+    // run createContentPage func after link was clicked
+    //alert('hello');
+   $$('#loginbtn').on('click', function()
+    {
+        username = $$('#username').val();
+        alert('hello ' + username);
+        var formData = myApp.formToData('#my-form');
+        //alert(JSON.stringify(formData));
+    }); 
+
+});
+
