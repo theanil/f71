@@ -66,7 +66,7 @@ myApp.onPageInit('login', function (page) {
         {
             errmessage += 'Please enter user id <br>';
             //myApp.alert('Please enableter user id');
-            $$('#username').css('border','1px solid red');
+            //$$('#username').css('border','1px solid red');
             valid = 0;
         }
         if(password.length <= 0)
@@ -74,20 +74,20 @@ myApp.onPageInit('login', function (page) {
             errmessage += 'Please enter password';
 
             //myApp.alert('Please enter password');
-            $$('#password').css('border','1px solid red');
+            //$$('#password').css('border','1px solid red');
             valid = 0;
         }
         //alert(valid);
 
         if(valid == 1)
         {
-             myApp.alert('Everything is correct');
+             myApp.alert('Everything is correct',  '');
             //$$.post('path-to-file.php', {username: username}, function (data) {
             //  console.log(data);
             //});            
         }else
         {
-            myApp.alert(errmessage);   
+            myApp.alert(errmessage,  '');   
             //$$('#username').css('border','1px solid red');
         }
 
