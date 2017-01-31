@@ -55,9 +55,43 @@ myApp.onPageInit('login', function (page) {
    $$('#loginbtn').on('click', function()
     {
         username = $$('#username').val();
-        alert('hello ' + username);
+        password = $$('#password').val();
+        //alert('hello ' + username);
         var formData = myApp.formToData('#my-form');
         //alert(JSON.stringify(formData));
+        var valid = 1;
+        var errmessage = '';
+
+        if(username.length <= 0)
+        {
+            errmessage += 'Please enter user id <br>';
+            //myApp.alert('Please enableter user id');
+            $$('#username').css('border','1px solid red');
+            valid = 0;
+        }
+        if(password.length <= 0)
+        {
+            errmessage += 'Please enter password';
+
+            //myApp.alert('Please enter password');
+            $$('#password').css('border','1px solid red');
+            valid = 0;
+        }
+        //alert(valid);
+
+        if(valid == 1)
+        {
+             myApp.alert('Everything is correct');
+            //$$.post('path-to-file.php', {username: username}, function (data) {
+            //  console.log(data);
+            //});            
+        }else
+        {
+            myApp.alert(errmessage);   
+            //$$('#username').css('border','1px solid red');
+        }
+
+
     }); 
 
 });
