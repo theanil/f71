@@ -107,15 +107,6 @@ $$('.confirm-title-ok-cancel').on('click', function () {
     );
 }); 
 
-
-var myApp = new Framework7({
-    modalTitle: 'Framework7',
-    animateNavBackIcon: true,
-});
-var $$ = Dom7;
-var mainView = myApp.addView('.view-main', {
-    dynamicNavbar: true,
-});
 var rightView = myApp.addView('.view-right', {
     dynamicNavbar: true
 });
