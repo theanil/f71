@@ -108,13 +108,26 @@ $$('.confirm-title-ok-cancel').on('click', function () {
     );
 }); 
 
+myApp.onPageInit('login', function (page) {
+var numpad = myApp.keypad({
+        input: '#username',
+        valueMaxLength: 10,
+        dotButton: false
+      });
 var numpad2 = myApp.keypad({
+        input: '#password',
+        valueMaxLength: 4,
+        dotButton: false
+      });
+});
+
+var numpad1 = myApp.keypad({
         input: '#username1',
         valueMaxLength: 10,
         dotButton: false
       });
       
-      
+
 var rightView = myApp.addView('.view-right', {
     dynamicNavbar: true
 });
