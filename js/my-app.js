@@ -50,7 +50,7 @@ function createContentPage() {
 
 //alert('hhh');
 
-myApp.onPageInit('login', function (page) {
+//myApp.onPageInit('login', function (page) {
     // run createContentPage func after link was clicked
     //alert('hello');
    $$('#loginbtn').on('click', function()
@@ -82,7 +82,11 @@ myApp.onPageInit('login', function (page) {
 
         if(valid == 1)
         {
-             myApp.alert('Everything is correct',  '');
+             //myApp.alert('Everything is correct',  '');
+             //var mainView = myApp.addView('.view-main')          
+        
+            // Load page from about.html file to main View:
+            mainView.router.loadPage('main.html');
             //$$.post('path-to-file.php', {username: username}, function (data) {
             //  console.log(data);
             //});            
@@ -95,7 +99,7 @@ myApp.onPageInit('login', function (page) {
 
     }); 
 
-});
+//});
 
 $$('.confirm-title-ok-cancel').on('click', function () {
     myApp.confirm('Are you sure?', 'My App', 
@@ -108,7 +112,7 @@ $$('.confirm-title-ok-cancel').on('click', function () {
     );
 }); 
 
-myApp.onPageInit('login', function (page) {
+//myApp.onPageInit('login', function (page) {
 var numpad = myApp.keypad({
         input: '#username',
         valueMaxLength: 10,
@@ -119,7 +123,7 @@ var numpad2 = myApp.keypad({
         valueMaxLength: 4,
         dotButton: false
       });
-});
+//});
 
 var numpad1 = myApp.keypad({
         input: '#username1',
