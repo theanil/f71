@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>Framework7 Keypad</title>
+    <link rel="stylesheet" href="css/framework7.ios.min.css">
+    <link rel="stylesheet" href="css/framework7.ios.colors.min.css">
+    <link rel="stylesheet" href="css/framework7.keypad.css">
+    
+  </head>
+  <body>
+    <div class="statusbar-overlay"></div>
+    <div class="views">
+      <div class="view view-main">
+        <div class="navbar">
+          <div class="navbar-inner">
+            <div class="center sliding">Framework7 Keypad</div>
+            <div class="right"><a href="#" class="link icon-only open-panel"><i class="icon icon-bars-blue"></i></a></div>
+          </div>
+        </div>
+        <div class="pages navbar-through">
+          <div data-page="index" class="page">
+            <div class="page-content">
+              <div class="content-block">
+                <div class="content-block-inner">
+                  <p>Keypad plugin extends Framework7 with additional custom keyboards. By default it comes with predefined <b>Numpad</b> and <b>Calculator</b> keyboards, but it also can be used to create custom keyboards with custom buttons.</p>
+                </div>
+              </div>
+              <div class="content-block-title">Numpad</div>
+              <div class="list-block">
+                <ul>
+                  <li>
+                    <div class="item-content">
+                      <div class="item-inner"> 
+                        <div class="item-input">
+                          <input type="text" placeholder="Enter number" readonly="readonly" id="demo-numpad"/>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+
+
+    
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="js/framework7.min.js"></script>
+    <script src="js/framework7.keypad.js"></script>
+    <script>
+      var $$ = Dom7;
+      var myApp = new Framework7({
+        animateNavBackIcon: true
+      });
+      var mainView = myApp.addView('.view-main', {
+        dynamicNavbar: true
+      });
+      var numpad = myApp.keypad({
+        input: '#demo-numpad',
+        valueMaxLength: 10,
+        dotButton: false
+      });
+
+      
+    </script>
+  </body>
+</html>

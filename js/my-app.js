@@ -10,6 +10,7 @@ var mainView = myApp.addView('.view-main', {
     dynamicNavbar: true
 });
 
+
 // Callbacks to run specific code for specific pages, for example for About page:
 myApp.onPageInit('about', function (page) {
     // run createContentPage func after link was clicked
@@ -107,15 +108,26 @@ $$('.confirm-title-ok-cancel').on('click', function () {
     );
 }); 
 
+var numpad2 = myApp.keypad({
+        input: '#username1',
+        valueMaxLength: 10,
+        dotButton: false
+      });
+      
+      
 var rightView = myApp.addView('.view-right', {
     dynamicNavbar: true
 });
+
+
 $$(document).on('ajaxStart', function(e) {
     if (e.detail.xhr.requestUrl.indexOf('autocomplete-languages.json') >= 0) {
         return;
     }
     myApp.showIndicator();
 });
+
+
 $$(document).on('ajaxComplete', function(e) {
     if (e.detail.xhr.requestUrl.indexOf('autocomplete-languages.json') >= 0) {
         return;
@@ -159,6 +171,8 @@ myApp.onPageInit('modals', function(page) {
         myApp.pickerModal('.picker-modal-demo');
     });
 });
+
+
 myApp.onPageInit('preloader', function(page) {
     $$('.demo-indicator').on('click', function() {
         myApp.showIndicator();
@@ -957,3 +971,4 @@ myApp.onPageInit('animation', function(page) {
     });
 });
 
+      
