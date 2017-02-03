@@ -140,16 +140,11 @@ var numpad1 = myApp.keypad({
       
 
 myApp.onPageInit('main', function(page) {
-    var songs = ['Yellow Submarine', 'Don\'t Stop Me Now', 'Billie Jean', 'Californication'];
-    var authors = ['Beatles', 'Queen', 'Michael Jackson', 'Red Hot Chili Peppers'];
+
     var ptrContent = $$(page.container).find('.pull-to-refresh-content');
     ptrContent.on('refresh', function(e) {
         setTimeout(function() {
-            var picURL = 'http://lorempixel.com/88/88/abstract/' + Math.round(Math.random() * 10);
-            var song = songs[Math.floor(Math.random() * songs.length)];
-            var author = authors[Math.floor(Math.random() * authors.length)];
-            var linkHTML = '<li class="item-content">' + '<div class="item-media"><img src="' + picURL + '" width="44"/></div>' + '<div class="item-inner">' + '<div class="item-title-row">' + '<div class="item-title">' + song + '</div>' + '</div>' + '<div class="item-subtitle">' + author + '</div>' + '</div>' + '</li>';
-            ptrContent.find('ul').prepend(linkHTML);
+
             myApp.pullToRefreshDone();
             myApp.alert('refreshing', '');
         }, 2000);
