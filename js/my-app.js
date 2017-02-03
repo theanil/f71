@@ -139,9 +139,9 @@ var numpad1 = myApp.keypad({
       });
       
 
-myApp.onPageInit('main', function(page) {
+myApp.onPageInit('main11', function(page) {
 
-    var ptrContent = $$(page.container).find('.pull-to-refresh-content');
+    var ptrContent = $$(page.container).find('.pull-to-refresh-content1');
     ptrContent.on('refresh', function(e) {
         setTimeout(function() {
 
