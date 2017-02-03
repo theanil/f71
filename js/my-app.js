@@ -86,6 +86,12 @@ function createContentPage() {
              //var mainView = myApp.addView('.view-main')          
         
             // Load page from about.html file to main View:
+
+            localStorage.setItem("logged_in", "yes");
+
+            myApp.addNotification( {
+                message: 'Welcome '+ username +'!'
+              } );
             mainView.router.loadPage('main.html');
             //$$.post('path-to-file.php', {username: username}, function (data) {
             //  console.log(data);
@@ -125,20 +131,102 @@ var numpad2 = myApp.keypad({
       });
 //});
 
+
 var numpad1 = myApp.keypad({
         input: '#username1',
         valueMaxLength: 10,
         dotButton: false
       });
       
+
+myApp.onPageInit('main', function(page) {
+    var songs = ['Yellow Submarine', 'Don\'t Stop Me Now', 'Billie Jean', 'Californication'];
+    var authors = ['Beatles', 'Queen', 'Michael Jackson', 'Red Hot Chili Peppers'];
+    var ptrContent = $$(page.container).find('.pull-to-refresh-content');
+    ptrContent.on('refresh', function(e) {
+        setTimeout(function() {
+            var picURL = 'http://lorempixel.com/88/88/abstract/' + Math.round(Math.random() * 10);
+            var song = songs[Math.floor(Math.random() * songs.length)];
+            var author = authors[Math.floor(Math.random() * authors.length)];
+            var linkHTML = '<li class="item-content">' + '<div class="item-media"><img src="' + picURL + '" width="44"/></div>' + '<div class="item-inner">' + '<div class="item-title-row">' + '<div class="item-title">' + song + '</div>' + '</div>' + '<div class="item-subtitle">' + author + '</div>' + '</div>' + '</li>';
+            ptrContent.find('ul').prepend(linkHTML);
+            myApp.pullToRefreshDone();
+            myApp.alert('refreshing', '');
+        }, 2000);
+    });
+});
+
 // Option 2. Using live 'page:init' event handlers for each page (not recommended)
 $$(document).on('page:beforeanimation', '.page[data-page="about"]', function (e) 
 {
   // Do something here when page with data-page="about" attribute loaded and initialized
-    myApp.alert('You clicked about', '');
-    return false;
+    myApp.alert('3 You clicked about', '');
+
+
+      //mainView.router.loadPage('form.html');
+
+    //return false;
 })    
       
+//Now we add our callback for initial page
+myApp.onPageBeforeInit('index', function (page) {
+
+
+  //Do something here with home page
+    //myApp.alert('01 index page initialized','');
+if(page == undefined)
+{
+   //myApp.alert('Begining','');
+    // mainView.router.reloadPage('main.html');
+
+    logged_in = localStorage.getItem("logged_in");
+    //myApp.alert(logged_in);
+    if(logged_in == 'yes')
+    {
+        //myApp.alert('Begining','');
+        mainView.router.reloadPage('main.html');
+    }
+}
+  //alert(page.name);
+  if(page.name == 'index')
+  {
+      //myApp.alert('01 index page initialized','');
+      //mainView.router.reloadPage('main.html');
+
+  }
+}).trigger(); //And trigger it right away
+
+/*
+myApp.onPageInit('index', function (page) {
+  //Do something here with home page
+  myApp.alert('02 index page initialized','');
+}).trigger(); //And trigger it right away
+
+*/
+
+function Logout()
+{
+    localStorage.setItem("logged_in", "");
+    //mainView.router.loadPage('index.html');
+    mainView.router.load({url: 'index.html',ignoreCache: true});
+    //location.reload(); 
+}
+
+myApp.onPageBeforeInit('about', function (page) {
+    myApp.alert('1 You clicked dd', '');
+    mainView.router.loadPage('form.html');
+    //return false;
+});
+
+var contactsCallback = myApp.onPageInit('about', function (page) {
+  myApp.alert('2 index page initialized','');
+  console.log(page);
+  //mainView.router.reloadPage('form.html');
+    //contactsCallback.remove();
+    //contactsCallback.trigger(); 
+});
+// Later we can cancel/remove this callback:
+
 
 var rightView = myApp.addView('.view-right', {
     dynamicNavbar: true
@@ -308,21 +396,7 @@ myApp.onPageInit('messages', function(page) {
         }, 2000);
     });
 });
-myApp.onPageInit('pull-to-refresh', function(page) {
-    var songs = ['Yellow Submarine', 'Don\'t Stop Me Now', 'Billie Jean', 'Californication'];
-    var authors = ['Beatles', 'Queen', 'Michael Jackson', 'Red Hot Chili Peppers'];
-    var ptrContent = $$(page.container).find('.pull-to-refresh-content');
-    ptrContent.on('refresh', function(e) {
-        setTimeout(function() {
-            var picURL = 'http://lorempixel.com/88/88/abstract/' + Math.round(Math.random() * 10);
-            var song = songs[Math.floor(Math.random() * songs.length)];
-            var author = authors[Math.floor(Math.random() * authors.length)];
-            var linkHTML = '<li class="item-content">' + '<div class="item-media"><img src="' + picURL + '" width="44"/></div>' + '<div class="item-inner">' + '<div class="item-title-row">' + '<div class="item-title">' + song + '</div>' + '</div>' + '<div class="item-subtitle">' + author + '</div>' + '</div>' + '</li>';
-            ptrContent.find('ul').prepend(linkHTML);
-            myApp.pullToRefreshDone();
-        }, 2000);
-    });
-});
+
 myApp.onPageInit('sortable-list', function(page) {
     $$('.list-block.sortable').on('open', function() {
         $$('.toggle-sortable').text('Done');
