@@ -131,6 +131,14 @@ var numpad1 = myApp.keypad({
         dotButton: false
       });
       
+// Option 2. Using live 'page:init' event handlers for each page (not recommended)
+$$(document).on('page:beforeanimation', '.page[data-page="about"]', function (e) 
+{
+  // Do something here when page with data-page="about" attribute loaded and initialized
+    myApp.alert('You clicked about', '');
+    return false;
+})    
+      
 
 var rightView = myApp.addView('.view-right', {
     dynamicNavbar: true
