@@ -179,7 +179,7 @@ if(page == undefined)
     if(logged_in == 'yes')
     {
         //myApp.alert('Begining','');
-        mainView.router.reloadPage('main.html');
+        //mainView.router.reloadPage('main.html');
     }
 }
   //alert(page.name);
