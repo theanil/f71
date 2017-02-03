@@ -3,7 +3,7 @@
 <!-- config.xml reference: https://build.phonegap.com/docs/config-xml -->
 <!-- in.bluapps.webapp  // com.blu.webapp-->
 
-<widget id="in.bluapps.beta" version="1.0.01" versionCode="100" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="in.bluapps.beta" version="1.0.01" versionCode="101" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
 
 
     <name>Blu Beta</name>
