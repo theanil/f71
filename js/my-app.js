@@ -188,7 +188,7 @@ if(page == undefined)
     }
 }
   //alert(page.name);
-  if(page.name == 'index')
+  //if(page.name == 'index')
   {
       //myApp.alert('01 index page initialized','');
       //mainView.router.reloadPage('main.html');
