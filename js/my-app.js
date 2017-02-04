@@ -89,9 +89,9 @@ function createContentPage() {
 
             localStorage.setItem("logged_in", "yes");
 
-            myApp.addNotification( {
-                message: 'Welcome '+ username +'!'
-              } );
+            //myApp.addNotification( {
+            //    message: 'Welcome '+ username +'!'
+            //  } );
             mainView.router.loadPage('main.html');
             //$$.post('path-to-file.php', {username: username}, function (data) {
             //  console.log(data);
@@ -117,6 +117,36 @@ $$('.confirm-title-ok-cancel').on('click', function () {
       }
     );
 }); 
+
+function showpop()
+{
+    $$.get("terms.html", function(data)
+        { 
+            myApp.popup(data); 
+            //myApp.alert(data, '');
+        }); 
+}
+myApp.onPageInit('main', function (page) {
+$$('#popterms').on('click', function () { 
+    $$.get("terms.html", function(data)
+        { 
+            myApp.popup(data); 
+            //myApp.alert(data, '');
+        }); 
+});
+});
+
+/*
+$$('.create-popup').on('click', function () {
+  var popupHTML = '<div class="popup">'+
+                    '<div class="content-block">'+
+                      '<p>Popup created dynamically.</p>'+
+                      '<p><a href="#" class="close-popup">Close me</a></p>'+
+                    '</div>'+
+                  '</div>'
+  myApp.popup(popupHTML);
+});        
+*/
 
 //myApp.onPageInit('login', function (page) {
 var numpad = myApp.keypad({
